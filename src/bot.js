@@ -37,7 +37,7 @@ client.on('message', function (message) {
   /* check if message starts with command prefix */
   if (isCmd(message)) {
     /* get command args */
-    const cmdArgs = message.content.substring(message.content.indexOf(PREFIX) + 1).split(new RegExp(/[\s+\,+\-+]/))
+    const cmdArgs = message.content.substring(message.content.indexOf(PREFIX) + 1).split(/[\s+,+\-+]/)
     /* get command name from args */
     const cmdName = cmdArgs.shift()
     /* check if valid command */
@@ -70,7 +70,7 @@ client.on('message', function (message) {
  * Registers bot commands into a map
  * @param {string} dir the path to the directory with commands for the bot
  */
-(async function registerCommands(dir = 'util') {
+(async function registerCommands (dir = 'util') {
   /* read directory */
   const files = await fs.readdir(path.join(__dirname, dir))
   console.log(files)
